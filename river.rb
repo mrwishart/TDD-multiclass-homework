@@ -7,4 +7,12 @@ class River
     @fishes = fishes
   end
 
+  def fish_count
+    return @fishes.count
+  end
+
+  def lose_fish
+    @fishes.pop
+  end
+
 end
