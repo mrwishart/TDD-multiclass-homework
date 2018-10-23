@@ -20,7 +20,7 @@ class BearTest < MiniTest::Test
     @river1 = River.new("Muddy", fishes1)
     @river2 = River.new("Empty", fishes2)
 
-    @bear1 = Bear.new("Yogi")
+    @bear1 = Bear.new("Yogi", "Smarter than the average bear")
 
   end
 
@@ -28,6 +28,15 @@ class BearTest < MiniTest::Test
 
     expected = "Yogi"
     actual = @bear1.name
+
+    assert_equal(expected, actual)
+
+  end
+
+  def test_bear_type
+
+    expected = "Smarter than the average bear"
+    actual = @bear1.type
 
     assert_equal(expected, actual)
 
@@ -82,6 +91,49 @@ class BearTest < MiniTest::Test
     assert_equal(expected_food_count, actual_food_count)
     assert_equal(expected_fish_count, actual_fish_count)
 
+  end
+
+  def test_bear_roar
+
+    expected = "Rarr. I guess"
+    actual = @bear1.roar
+
+    assert_equal(expected, actual)
+
+  end
+
+  def test_bear_still_hungry__true
+
+    expected_food_count = 2
+    expected_hunger = true
+
+    @bear1.eat(@river1)
+    @bear1.eat(@river1)
+
+    actual_food_count = @bear1.food_count
+    actual_hunger = @bear1.still_hungry?
+
+    assert_equal(expected_food_count, actual_food_count)
+    assert_equal(expected_hunger, actual_hunger)
+
+
+  end
+
+  def test_bear_still_hungry__false
+
+    expected_food_count = 3
+    expected_hunger = false
+
+    @bear1.eat(@river1)
+    @bear1.eat(@river1)
+    @bear1.eat(@river1)
+
+    actual_food_count = @bear1.food_count
+    actual_hunger = @bear1.still_hungry?
+
+    assert_equal(expected_food_count, actual_food_count)
+    assert_equal(expected_hunger, actual_hunger)
+    
   end
 
 end
