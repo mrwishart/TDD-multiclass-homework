@@ -6,6 +6,7 @@ class Bear
     @name = name
     @type = type
     @stomach = []
+    @full_stomach = 3
   end
 
   def food_count()
@@ -28,8 +29,7 @@ class Bear
   end
 
   def still_hungry?
-    full_stomach = 3
-    return food_count() < full_stomach
+    return food_count() < @full_stomach
   end
 
 end
