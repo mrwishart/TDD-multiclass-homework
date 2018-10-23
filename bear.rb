@@ -12,8 +12,12 @@ class Bear
   end
 
   def eat(river)
-    @stomach << river.fishes.last
-    river.lose_fish
+    #Check river has fish to eat
+    if river.fish_count != 0
+      @stomach << river.fishes.last
+      river.lose_fish
+    end
+
   end
 
 end
